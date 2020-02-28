@@ -9,7 +9,7 @@
 	<div class="container">	
 		<ul>
 			<li><a href="FormCadastrarVinho">Cadastrar Vinho</a></li>
-			<li><a href="FormCadastrarUsuario">Cadastrar Usuário</a></li>
+			<li><a href="FormCadastrarCliente">Cadastrar Cliente</a></li>
 			<li><a href="recomendarVinhos.jsp">Recomendação de Vinhos</a></li>
 			<li><a href="GerenciarVinhos">Gerenciar Vinhos</a></li>
 		</ul>

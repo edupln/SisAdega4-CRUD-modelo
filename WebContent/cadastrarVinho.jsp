@@ -8,6 +8,8 @@
 	<%@include file="_cabecalho.jsp"%>
 	
 	<div class="container">		
+
+ 		
 		<c:if test = "${not empty mensagem}">
 			<div class="alert alert-danger">
 				<strong>"${mensagem}"</strong>
@@ -23,6 +25,8 @@
 		</c:if>
 		
 		<c:if test= "${not empty uvas}">
+	
+
 				
 			<form action="CadastrarVinho" method="post">
 				
@@ -35,6 +39,7 @@
 					</div>
 				</div>
 				
+ 				
 				<div class="row">
 					<div class="col-sm-4">					
 						<label for="tipoVinho">Tipo: </label>
@@ -55,6 +60,8 @@
 						</select>
 					</div>
 				</div>
+
+
 	
 				<div class="row">
 					<div class="col-sm-2">
@@ -73,7 +80,10 @@
 				<br><br>
 				<button type="submit" class="btn btn-primary">Cadastrar Vinho</button>
 			</form>	
-		</c:if>	
+			
+ 
+		</c:if>
+	
 	</div>
 </body>
 </html>

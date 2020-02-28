@@ -1,0 +1,9 @@
+Para incluir um cadastro:
+Adicionar o link no index.jsp
+Criar o FormCadastrarXXXServlet.java
+Criar o cadastrarXXX.jsp
+Criar o CadastrarXXXServlet.java
+Alterar Managers que este novo cadastro consuma dados ou tenha algum relacionamento
+Mapear o model.XXX no persistence.xml
+Criar o objeto XXX na camada model
+Criar o DAO desse objeto na camada dao (lembrar de importar o model.XXX aqui)

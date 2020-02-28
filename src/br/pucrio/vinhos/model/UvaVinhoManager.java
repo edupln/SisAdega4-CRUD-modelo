@@ -3,6 +3,7 @@ import java.util.List;
 
 import br.pucrio.vinhos.dao.UvaDAO;
 import br.pucrio.vinhos.dao.VinhoDAO;
+import br.pucrio.vinhos.dao.ClienteDAO;
 
 public class UvaVinhoManager {
 
@@ -87,6 +88,43 @@ public class UvaVinhoManager {
 		String mensagem = "Nao foi possivel cadastrar o vinho";
 		return mensagem;
 		}	
+	}
+	
+	//#################### Cadastrar Cliente ##################
+	public static String cadastrarCliente( String nomeCliente, String idadeCliente) {
+		ClienteDAO dao = new ClienteDAO();
+		
+		// Verifica se todos os campos estao preenchidos.
+		if( nomeCliente == null || idadeCliente == null){
+			String mensagem = "Nao foi possivel cadastrar o cliente: Preencha todos os campos obrigatorios.";
+			return mensagem;
+		}
+		
+		// Verifica se ja existe cliente com este nome
+		Cliente existente = dao.selecionarPorNome(nomeCliente);
+		if( existente != null ) {
+			String mensagem = "Nao foi possivel cadastrar o cliente: Ja existe outro cliente com este nome . ";
+			return mensagem;
+		}
+				
+		Cliente novo = new Cliente(nomeCliente, idadeCliente);
+		
+		try {
+			dao.inserir(novo);
+			String mensagem = "Cliente " + novo.getNomeCliente() + " inserido com sucesso.";
+			return mensagem;
+		}catch( Exception e) {
+		e.printStackTrace();
+		String mensagem = "Nao foi possivel cadastrar o cliente";
+		return mensagem;
+		}	
+	}
+	
+	// Clientes
+	public static List<Cliente> consultarTodosClientes() {
+		ClienteDAO dao = new ClienteDAO();
+		List<Cliente> clientes = dao.selecionarTodos();
+		return clientes;
 	}
 	
 	// Uva
