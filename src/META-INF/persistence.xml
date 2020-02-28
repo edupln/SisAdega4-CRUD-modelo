@@ -12,6 +12,7 @@
 		<!--entidade mapeada -->
 		<class>br.pucrio.vinhos.model.Uva</class>		
 		<class>br.pucrio.vinhos.model.Vinho</class>
+		<class>br.pucrio.vinhos.model.Cliente</class>
 				
 		<properties>
 			<!--dados da conexao -->
