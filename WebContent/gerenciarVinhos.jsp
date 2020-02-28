@@ -12,6 +12,8 @@
 		<c:if test= "${empty vinhos}">			
 	        <div class="alert alert-danger">
 	        	<strong>Não há vinhos cadastrados</strong>
+	        	<br></br>
+	        	<a href="ConfirmarOperacao?operacao=popularBD" class="btn btn-primary">Popular Banco de Dados</a>
 	        </div>	    
 		</c:if>
 					
