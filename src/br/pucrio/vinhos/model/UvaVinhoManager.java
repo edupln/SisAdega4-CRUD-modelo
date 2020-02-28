@@ -58,4 +58,47 @@ public class UvaVinhoManager {
 		novo = new Vinho("Santa Maria", 2017, TipoVinhoEnum.BRANCO.getTipo(), uva3, 2, 88.65);
 		vinhoDao.inserir(novo);
 	}
+	
+	public static String cadastrarVinho( String nomeVinho, int anoVinho, String tipoVinho, double precoVinho, int qtdEstoque, int idUva ) {
+		VinhoDAO dao = new VinhoDAO();
+		
+		// Verifica se todos os campos estao preenchidos.
+		if( nomeVinho == null || anoVinho <= 0 || tipoVinho == null || precoVinho < 0 || qtdEstoque < 0){
+			String mensagem = "Nao foi possivel cadastrar o vinho: Preencha todos os campos obrigatorios.";
+			return mensagem;
+		}
+		
+		// Verifica se ja existe vinho com este nome
+		Vinho existente = dao.selecionarPorNome(nomeVinho);
+		if( existente != null ) {
+			String mensagem = "Nao foi possivel cadastrar o vinho: Ja existe outro vinho com este nome . ";
+			return mensagem;
+		}
+		
+		Uva uva = consultarUvaPorId(idUva);
+		Vinho novo = new Vinho(nomeVinho, anoVinho, tipoVinho, uva, qtdEstoque, precoVinho);
+		
+		try {
+			dao.inserir(novo);
+			String mensagem = "Vinho " + novo.getNomeVinho() + " inserido com sucesso.";
+			return mensagem;
+		}catch( Exception e) {
+		e.printStackTrace();
+		String mensagem = "Nao foi possivel cadastrar o vinho";
+		return mensagem;
+		}	
+	}
+	
+	// Uva
+	public static List<Uva> consultarTodasUvas() {
+		UvaDAO dao = new UvaDAO();
+		List<Uva> uvas = dao.selecionarTodos();
+		return uvas;
+	}
+	
+	public static Uva consultarUvaPorId(int idUva) {
+		UvaDAO dao = new UvaDAO();
+		Uva uva = dao.selecionarPorId(idUva);
+		return uva;
+	}
 }
